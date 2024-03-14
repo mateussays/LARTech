@@ -8,7 +8,6 @@ namespace LARTech.API.Entities
         public Person() 
         {
             Phones = new List<PhoneNumbers>();
-            IsActive = true;
             IsDeleted = false;
         }
         public Guid Id { get; set; }
@@ -25,11 +24,12 @@ namespace LARTech.API.Entities
 
         public bool IsDeleted { get; set; }
 
-        public void Update(string name, string cpf, DateFormat birthdate )
+        public void Update(string name, string cpf, DateFormat birthdate, bool isactive )
         {
           Name = name;
           CPF = cpf;
           BirthDate = birthdate;
+          IsActive = isactive;
         }
 
         public void Delete()
@@ -37,5 +37,6 @@ namespace LARTech.API.Entities
           IsDeleted = true;
         }
 
+    
     }
 }

@@ -2,7 +2,7 @@
 {
     public class PhoneNumbers
     {
-        public Guid PhoneNumberId { get; set; }
+        public int PhoneNumberId { get; set; }
 
         public string PhoneNumberType { get; set;}
 

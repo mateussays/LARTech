@@ -10,7 +10,7 @@ namespace LARTech.API.Entities
             Phones = new List<PhoneNumbers>();
             IsDeleted = false;
         }
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         
         public string Name { get; set; }
 

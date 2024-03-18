@@ -17,7 +17,7 @@ namespace LARTech.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult GeAll() 
+        public ActionResult GetAll() 
         { 
             var persons = _context.Persons.Where(d => !d.IsDeleted).ToList();
 
@@ -26,7 +26,7 @@ namespace LARTech.API.Controllers
 
         [HttpGet("{id}")]
 
-        public ActionResult GetById(Guid id) 
+        public ActionResult GetById(int id) 
         {
             var person = _context.Persons.SingleOrDefault(d => d.Id == id);
 
@@ -44,10 +44,16 @@ namespace LARTech.API.Controllers
         {
 
             var existingPerson = _context.Persons.SingleOrDefault(p => p.Id == person.Id);
+            var existingCPF = _context.Persons.SingleOrDefault(p => p.CPF == person.CPF );
 
             if (existingPerson != null)
             {
                 return Conflict("A person with the same ID already exists.");
+            }
+
+            if (existingCPF != null)
+            {
+                return Conflict("A person with the same CPF already exists.");
             }
 
 
@@ -59,7 +65,7 @@ namespace LARTech.API.Controllers
 
         [HttpPut("{id}")]
 
-        public IActionResult Update(Guid id, Person input) 
+        public IActionResult Update(int id, Person input) 
         {
             var person = _context.Persons.SingleOrDefault(d => d.Id == id);
 
@@ -74,7 +80,7 @@ namespace LARTech.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(Guid id) 
+        public ActionResult Delete(int id) 
         {
             var person = _context.Persons.SingleOrDefault(d => d.Id == id);
 
@@ -91,7 +97,7 @@ namespace LARTech.API.Controllers
 
         [HttpPost("{id}/phone-numbers")]
 
-        public IActionResult PostPhoneNumbers(Guid id, PhoneNumbers input) 
+        public IActionResult PostPhoneNumbers(int id, PhoneNumbers input) 
         {
             var person = _context.Persons.SingleOrDefault(d => d.Id == id);
 

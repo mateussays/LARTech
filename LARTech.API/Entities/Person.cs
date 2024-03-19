@@ -16,7 +16,7 @@ namespace LARTech.API.Entities
 
         public string CPF { get; set; }
 
-        public DateFormat BirthDate { get; set; }
+        public string BirthDate { get; set; }
 
         public List<PhoneNumbers> Phones { get; set; }
 
@@ -24,7 +24,7 @@ namespace LARTech.API.Entities
 
         public bool IsDeleted { get; set; }
 
-        public void Update(string name, string cpf, DateFormat birthdate, bool isactive )
+        public void Update(string name, string cpf, string birthdate, bool isactive )
         {
           Name = name;
           CPF = cpf;
